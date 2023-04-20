@@ -1,9 +1,12 @@
 import { TransactionsTable, PriceHighLight } from './styles'
-import { useTransactionContext } from '../../../../contexts/TransactionsContext'
+import { TransactionContext } from '../../../../contexts/TransactionsContext'
 import { priceFormatter, dateFormatter } from '../../../../utils/formatter'
+import { useContextSelector } from 'use-context-selector'
 
 export function TransactionTable() {
-  const { transactions } = useTransactionContext()
+  const transactions = useContextSelector(TransactionContext, (context) => {
+    return context.transactions
+  })
 
   return (
     <TransactionsTable>
