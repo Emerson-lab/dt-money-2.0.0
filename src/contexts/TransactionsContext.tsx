@@ -1,44 +1,69 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { api } from '../lib/axios'
 
 interface TransactionProps {
-  id: number;
-  description: string;
-  type: "income" | "outcome";
-  price: number;
-  category: string;
-  createdAt: string;
+  id: number
+  description: string
+  type: 'income' | 'outcome'
+  price: number
+  category: string
+  createdAt: string
+}
+
+type CreateTransactionInput = {
+  description: string
+  price: number
+  category: string
+  type: 'income' | 'outcome'
 }
 
 type TransactionContextType = {
-  transactions: TransactionProps[];
+  transactions: TransactionProps[]
+  fetchTrasactions: (query?: string) => Promise<void>
+  createTransaction: (data: CreateTransactionInput) => Promise<void>
 }
 
-const TransactionContext = createContext({} as TransactionContextType);
+const TransactionContext = createContext({} as TransactionContextType)
 
 export const useTransactionContext = () => {
-  return useContext(TransactionContext);
+  return useContext(TransactionContext)
 }
 
 interface TransactionsProviderProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
-  const [transactions, setTransactions] = useState<TransactionProps[]>([]);
+  const [transactions, setTransactions] = useState<TransactionProps[]>([])
+
+  async function fetchTrasactions(query?: string) {
+    const response = await api.get('/transactions', {
+      params: {
+        _sort: 'createdAt',
+        _order: 'desc',
+        q: query,
+      },
+    })
+    setTransactions(response.data)
+  }
+
+  async function createTransaction(data: CreateTransactionInput) {
+    const response = await api.post('/transactions', {
+      ...data,
+      createdAt: new Date(),
+    })
+
+    setTransactions((state) => [response.data, ...state])
+  }
 
   useEffect(() => {
-    async function loadTransaction() {
-      const response = await fetch('http://localhost:3333/transactions');
-      const data = await response.json();
-      setTransactions(data);
-    }
-
-    loadTransaction();
-
-  }, []);
+    fetchTrasactions()
+  }, [])
 
   return (
-    <TransactionContext.Provider value={{ transactions }}>
+    <TransactionContext.Provider
+      value={{ transactions, fetchTrasactions, createTransaction }}
+    >
       {children}
     </TransactionContext.Provider>
   )

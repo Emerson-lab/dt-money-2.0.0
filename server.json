@@ -6,7 +6,7 @@
       "type": "income",
       "category": "Venda",
       "price": 14000,
-      "createdAt": "2023-04-29T19:36:44.505Z"
+      "createdAt": "2023-03-29T19:36:44.505Z"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "type": "outcome",
       "category": "Saída",
       "price": 50,
-      "createdAt": "2023-04-29T09:36:44.505Z"
+      "createdAt": "2023-03-29T09:36:44.505Z"
     },
     {
       "id": 3,
@@ -23,6 +23,22 @@
       "category": "Saída",
       "price": 80,
       "createdAt": "2023-03-29T09:36:44.505Z"
+    },
+    {
+      "description": "Luz",
+      "price": 180,
+      "category": "gasto",
+      "type": "outcome",
+      "createdAt": "2023-04-20T18:39:54.763Z",
+      "id": 4
+    },
+    {
+      "description": "Água",
+      "price": 80,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-04-20T18:58:49.915Z",
+      "id": 5
     }
   ]
 }

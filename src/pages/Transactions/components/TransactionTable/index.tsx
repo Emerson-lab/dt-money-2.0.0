@@ -1,14 +1,14 @@
 import { TransactionsTable, PriceHighLight } from './styles'
-import { useTransactionContext } from '../../../../contexts/TransactionsContext';
-import { priceFormatter, dateFormatter } from '../../../../utils/formatter';
+import { useTransactionContext } from '../../../../contexts/TransactionsContext'
+import { priceFormatter, dateFormatter } from '../../../../utils/formatter'
 
 export function TransactionTable() {
-  const { transactions } = useTransactionContext();
+  const { transactions } = useTransactionContext()
 
   return (
     <TransactionsTable>
       <tbody>
-        {transactions?.map(transaction => {
+        {transactions?.map((transaction) => {
           return (
             <tr key={transaction.id}>
               <td width="50%">{transaction.description}</td>

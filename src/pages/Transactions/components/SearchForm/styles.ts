@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const SeacrhFormContiner = styled.form`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     display: flex;
     gap: 1rem;
 
@@ -17,7 +17,7 @@ export const SeacrhFormContiner = styled.form`
       &::placeholder {
         color: ${theme['gray-500']};
       }
-      
+
       &:hover:not(:focus) {
         border: 1px solid ${theme['green-500']};
       }

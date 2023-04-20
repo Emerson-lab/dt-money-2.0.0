@@ -1,7 +1,7 @@
-import styled , {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const TransactionsTable = styled.table`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     width: 100%;
     border-collapse: separate;
     border-spacing: 0 0.5rem;
@@ -15,7 +15,7 @@ export const TransactionsTable = styled.table`
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
       }
-     
+
       &:last-child {
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
@@ -29,7 +29,7 @@ interface PriceHighLightProps {
 }
 
 export const PriceHighLight = styled.span<PriceHighLightProps>`
-  ${({theme, variant}) => css`
+  ${({ theme, variant }) => css`
     color: ${variant === 'income' ? theme['green-300'] : theme['red-300']};
   `}
 `
