@@ -10,6 +10,7 @@ export const SeacrhFormContiner = styled.form`
       border-radius: 6px;
       border: 0;
       background: ${theme['gray-900']};
+      border: 1px solid ${theme['gray-900']};
       color: ${theme['gray-300']};
       padding: 1rem;
 
@@ -17,7 +18,7 @@ export const SeacrhFormContiner = styled.form`
         color: ${theme['gray-500']};
       }
       
-      &:hover {
+      &:hover:not(:focus) {
         border: 1px solid ${theme['green-500']};
       }
     }

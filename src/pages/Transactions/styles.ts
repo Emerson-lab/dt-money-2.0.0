@@ -25,7 +25,6 @@ export const TransactionsTable = styled.table`
         border-bottom-left-radius: 6px;
       }
      
-
       &:last-child {
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
